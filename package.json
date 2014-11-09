@@ -1,0 +1,17 @@
+{
+  "name": "wheelzoNlp",
+  "version": "0.0.1",
+  "description": "Natural language processing for Wheelzo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "testWheelzo"
+  },
+  "author": "Terry Chen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.1",
+    "jade": "*",
+    "body-parser": "^1.9.2"
+  }
+}
