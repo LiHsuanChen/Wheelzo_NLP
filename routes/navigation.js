@@ -1,6 +1,6 @@
-var checkMessage = require('../core/checkMessage'),
-    timeTracker = require('../core/timeTracker'),
-    priceTracker = require('../core/priceTracker'),
+var checkMessage    = require('../core/checkMessage'),
+    timeTracker     = require('../core/timeTracker'),
+    priceTracker    = require('../core/priceTracker'),
     locationTracker = require('../core/locationTracker');
 
 function apiResponse(){
@@ -44,17 +44,16 @@ exports.index = function(req, res){
 
  	var isdriver = checkMessage.isDriver(request.message);
 
- 	
- 	
  	if (isdriver){
  		var locationResult = locationTracker.searchLocation(request.message);
+    var priceCheckResult = priceTracker.searchPrice(request.message);
+
  		api.origin = capatilzieString(locationResult.origin);
  		api.destination = capatilzieString(locationResult.destination);
  		api.departure = timeTracker.extractDeparture(request.message, request.timestamp);
  		api.capacity = null;
- 		var priceCheckResult = priceTracker.searchPrice(request.message);
  		api.price = priceCheckResult.price;
  	}
- 	
+
  	res.json(api);
  }
