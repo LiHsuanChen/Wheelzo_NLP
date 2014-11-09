@@ -83,33 +83,34 @@ exports.extractDeparture = function( message, postTime ) {
 }
 
 function extractDeparture_cleanText( message ) {
-    message = message.replace(/(\r\n|\n|\r)/gm," ");
-    message = message.replace(/(\(|\)|\:|\;|\#|\/|\.|\,|\!|\-)/gm," ");
-    message = message.toLowerCase();
-    
-    message = message.replace(/ mon /g      ,   ' monday '   );
-    message = message.replace(/ tue /g      ,   ' tuesday '  );
-    message = message.replace(/ tues /g     ,   ' tuesday '  );
-    message = message.replace(/ wed /g      ,   ' wednesday ');
-    message = message.replace(/ thur /g     ,   ' thursday ' );
-    message = message.replace(/ thurs /g    ,   ' thursday ' );
-    message = message.replace(/ fri /g      ,   ' friday '   );
-    message = message.replace(/ sat /g      ,   ' saturday ' );
-    message = message.replace(/ sun /g      ,   ' sunday '   );
 
-    message = message.replace(/monday/g     ,   'next monday'   );
-    message = message.replace(/tuesday/g    ,   'next tuesday'  );
-    message = message.replace(/wednesday/g  ,   'next wednesday');
-    message = message.replace(/thursday/g   ,   'next thursday' );
-    message = message.replace(/friday/g     ,   'next friday'   );
-    message = message.replace(/saturday/g   ,   'next saturday' );
-    message = message.replace(/sunday/g     ,   'next sunday'   );
+  message = message.replace(/(\r\n|\n|\r)/gm," ");
+  message = message.replace(/(\(|\)|\:|\;|\#|\/|\.|\,|\!|\-|\~)/gm," ");
+  message = message.toLowerCase();
+  
+  message = message.replace(/ mon /g      ,   ' monday '   );
+  message = message.replace(/ tue /g      ,   ' tuesday '  );
+  message = message.replace(/ tues /g     ,   ' tuesday '  );
+  message = message.replace(/ wed /g      ,   ' wednesday ');
+  message = message.replace(/ thur /g     ,   ' thursday ' );
+  message = message.replace(/ thurs /g    ,   ' thursday ' );
+  message = message.replace(/ fri /g      ,   ' friday '   );
+  message = message.replace(/ sat /g      ,   ' saturday ' );
+  message = message.replace(/ sun /g      ,   ' sunday '   );
 
-    message = message.replace(/am/g         ,   ' am');
-    message = message.replace(/pm/g         ,   ' pm');
+  message = message.replace(/monday/g     ,   'next monday'   );
+  message = message.replace(/tuesday/g    ,   'next tuesday'  );
+  message = message.replace(/wednesday/g  ,   'next wednesday');
+  message = message.replace(/thursday/g   ,   'next thursday' );
+  message = message.replace(/friday/g     ,   'next friday'   );
+  message = message.replace(/saturday/g   ,   'next saturday' );
+  message = message.replace(/sunday/g     ,   'next sunday'   );
 
-    message = message.replace(/\s+/g," ");
-    return message;        
+  message = message.replace(/am/g         ,   ' am');
+  message = message.replace(/pm/g         ,   ' pm');
+
+  message = message.replace(/\s+/g," ");
+  return message;                
 }
 
 String.prototype.containsExpression = function(expression) {
@@ -117,15 +118,6 @@ String.prototype.containsExpression = function(expression) {
     return regex.test(this);
 };
 
-Array.prototype.containsValue = function(value) {
-    var i = this.length;
-    while (i--) {
-       if (this[i] == value) {
-           return true;
-       }
-    }
-    return false;
-}
 
 function is_numeric(str){
     return /^\d+$/.test(str);

@@ -13,11 +13,11 @@ exports.searchPrice = function( message ){
 	}
 	//Case Beta
 	else if ( result.numOfDollarSign > 1){
-		console.log("More than one $ found in the context");
+		//console.log("More than one $ found in the context");
 	}
 	//Case Delta
 	else if ( result.numOfDollarSign == 0){
-		console.log("No $ found in the context");
+		//console.log("No $ found in the context");
 		return result;
 	}
 	return result;

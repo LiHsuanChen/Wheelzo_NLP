@@ -65,12 +65,15 @@ function originTest( config, locationTracker ){
 
 	var test = testCaseManager(config);
 
+	console.log("Staring Origin Test");
+
 		for( var i = test.start; i < test.end; i++ ){
 
 		var location = locationTracker.searchLocation(testCases[i].message),
 			a_origin = capatilzieString(location.origin);
 
 		if (a_origin == testCases[i].e_origin){
+			console.log("------------------------------------------------------------------------------------------------------------------------------");
 			console.log("PASS");
 			console.log("id: " + testCases[i].id);
 			console.log("Message: " + testCases[i].message);
@@ -78,6 +81,7 @@ function originTest( config, locationTracker ){
 			console.log("Actual: " + a_origin);
 		}
 		else{
+			console.log("------------------------------------------------------------------------------------------------------------------------------");
 			console.log("FAIL");
 			console.log("id: " + testCases[i].id);
 			console.log("Message: " + testCases[i].message);
@@ -177,7 +181,7 @@ function run(){
 	checkMessageTest(config.isDriver, require('../core/checkMessage'));
 	}
 	if ( config.origin.testOn ){
-		originTest(config.origin), require('../core/locationTracker');;
+		originTest(config.origin, require('../core/locationTracker'));
 	}
 	if ( config.destination.testOn ){
 		destinationTest(config.destination, require('../core/locationTracker'));

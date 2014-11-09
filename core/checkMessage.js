@@ -1,6 +1,5 @@
 exports.isDriver = function( message ) {
     var words = isDriver_cleanText(message).split(" ");
-    
     var passengerHintWords = [
         "looking",
         "need"
@@ -29,10 +28,19 @@ exports.isDriver = function( message ) {
 }
 
 function isDriver_cleanText( message ) {
-    console.log(message);
     message = message.replace(/(\r\n|\n|\r)/gm," ");
     message = message.replace(/(\(|\)|\:|\;|\#|\.|\/|\,|\!|\-)/gm," ");
     message = message.replace(/\s+/g," ");
     message = message.toLowerCase();
     return message;
+}
+
+Array.prototype.containsValue = function(value) {
+    var i = this.length;
+    while (i--) {
+       if (this[i] == value) {
+           return true;
+       }
+    }
+    return false;
 }
