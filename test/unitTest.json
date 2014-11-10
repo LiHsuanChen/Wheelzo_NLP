@@ -1,36 +1,36 @@
 {
 	"isDriver" : { 
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
 		"testFromCase": 0,
 		"testToCase": 20
 	},
 	"origin" : {
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
 		"testFromCase": 0,
 		"testToCase": 20
 	},
 	"destination" : {
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
 		"testFromCase": 0,
 		"testToCase": 20
 	},
 	"departure" : {
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
-		"testFromCase": 0,
-		"testToCase": 20
+		"testFromCase": 17,
+		"testToCase": 17
 	},
 	"price" : {
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
 		"testFromCase": 0,
 		"testToCase": 20
 	},
 	"capacity" : {
-		"testOn" : false,
+		"testOn" : true,
 		"testAllCases" : true,
 		"testFromCase": 0,
 		"testToCase": 20
