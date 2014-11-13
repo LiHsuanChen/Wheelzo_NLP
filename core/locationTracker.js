@@ -266,7 +266,7 @@ function primaryIndicatorResultGamma( message, result ){
 		result = primaryIndicatorResultGamma_Case1( message, result );
 	}
 	//Case 2 where you might have multiple origin and destination
-	else if ( rsult.numOfArrow > 1 ){
+	else if ( result.numOfArrow > 1 ){
 		console.log("Multiple '>' appeared in the context")
 	}
 	return result;
