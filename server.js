@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-var environments = "development";
+var environments = "production";
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -32,7 +32,8 @@ app.set('view engine', 'jade');
 
 
 app.get('/', navi.index);
-app.post('/nlpApi', jsonParser , navi.nlpApi)
+app.get('/restTest', navi.restTest);
+app.post('/nlpApi', jsonParser , navi.nlpApi);
 
 
 http.createServer(app).listen(port, ipaddress , function(){

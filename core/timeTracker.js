@@ -54,11 +54,18 @@ exports.extractDeparture = function( message, postTime ) {
         if ( message.containsExpression("am") ) {
             hour = 0;
             timestampIdentifier = words.indexOf("am");
+            while ( !is_numeric(words[timestampIdentifier-1]) ) {
+                timestampIdentifier = words.indexOf("am", timestampIdentifier+1);
+            }
         } else {
             timestampIdentifier = words.indexOf("pm");
+            while ( !is_numeric(words[timestampIdentifier-1]) ) {
+                timestampIdentifier = words.indexOf("pm", timestampIdentifier+1);
+            }
         }
         
         var hourLocation = timestampIdentifier;
+        
         while ( is_numeric(words[hourLocation-1]) ) {
             hourLocation = hourLocation - 1;
         }
@@ -66,7 +73,7 @@ exports.extractDeparture = function( message, postTime ) {
 
         if ( words[hourLocation+1] ) {
             if ( is_numeric(words[hourLocation+1]) ) {
-                minute = parseInt( words[hourLocation+1] );
+                minute = minute + parseInt( words[hourLocation+1] );
             }
         }
     } else {
@@ -74,10 +81,10 @@ exports.extractDeparture = function( message, postTime ) {
     }
     /* End of setting the date of departure */
 
-
     // Building out the date object to return
     var postTime_unix = new Date(postTime).getTime() / 1000;
     var departure = new Date( strtotime(userDescription, postTime_unix)*1000 );
+
     departure.setHours( hour, minute, second );
     return departure.toISOString();
 }

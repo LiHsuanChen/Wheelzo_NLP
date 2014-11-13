@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.10.1",
     "jade": "*",
-    "body-parser": "^1.9.2"
+    "body-parser": "^1.9.2",
+    "colors": "^1.0.3"
   }
 }
