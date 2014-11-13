@@ -66,6 +66,10 @@ exports.restTest = function(req, res){
  * POST Wheelzo NLP Api
  */
  exports.nlpApi = function(req, res){
+
+console.log("C-TYPE: " + req.get('content-type'))
+console.log("BODY: " + req.body);
+
   var request = req.body,
       api = new apiResponse();
 

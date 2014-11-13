@@ -33,7 +33,7 @@ app.set('view engine', 'jade');
 
 app.get('/', navi.index);
 app.get('/restTest', navi.restTest);
-app.post('/nlpApi', jsonParser , navi.nlpApi);
+app.post('/nlpApi', navi.nlpApi);
 
 
 http.createServer(app).listen(port, ipaddress , function(){
