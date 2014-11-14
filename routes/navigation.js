@@ -67,13 +67,6 @@ exports.restTest = function(req, res){
  */
  exports.nlpApi = function(req, res){
 
-console.log("C-TYPE: " + req.get('content-type'))
-for (var key in req.body){
-  var obj = req.body[key];
-    console.log(key + " = " + obj);
-  }
-//console.log("BODY: " + req.body);
-
   var request = req.body,
       api = new apiResponse();
 

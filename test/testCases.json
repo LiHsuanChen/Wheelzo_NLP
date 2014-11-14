@@ -229,5 +229,17 @@
 		"e_departure" : "",
 		"e_price" : null,
 		"e_capacity" : null
+	},
+	{
+		"id" : 21,
+		"message" : "Driving Waterloo to Markham Thursday Nov 13 at 10 PM  $15/seat", 
+		"timestamp" : "2014-11-03T04:13:59+0000",
+		"e_isDriver" : true,
+		"e_origin" : "waterloo",
+		"e_destination" : "richmond hill",
+		"e_departure" : "",
+		"e_price" : null,
+		"e_capacity" : null
+
 	}
 ]
