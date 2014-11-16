@@ -48,32 +48,25 @@ exports.extractDeparture = function( message, postTime ) {
         }
     } else if ( message.containsExpression("tonight") || message.containsExpression("evening") ) {
         hour = 20;
-    } else if ( message.containsExpression("am") || message.containsExpression("pm") ) {
+    } else if ( message.containsExpression("@catchTime") ) {
         var timestampIdentifier = 0;
         var words = message.split(" ");
-        if ( message.containsExpression("am") ) {
+        if ( message.containsExpression("am@catchTime") ) {
             hour = 0;
-            timestampIdentifier = words.indexOf("am");
+            timestampIdentifier = words.indexOf("am@catchTime");
 
-            while ( !is_numeric(words[timestampIdentifier-1]) ) {
-                timestampIdentifier = words.indexOf("am", timestampIdentifier+1);
-                if(timestampIdentifier == -1) break;
-            }
         } else {
-            timestampIdentifier = words.indexOf("pm");
+            timestampIdentifier = words.indexOf("pm@catchTime");
 
-            while ( !is_numeric(words[timestampIdentifier-1]) ) {
-                timestampIdentifier = words.indexOf("pm", timestampIdentifier+1);
-                if(timestampIdentifier == -1) break;
-            }
         }
         
         var hourLocation = timestampIdentifier;
-
         while ( is_numeric(words[hourLocation-1]) ) {
             hourLocation = hourLocation - 1;
+            if (hourLocation < 0) {
+                break;
+            }
         }
-
 
         if ( hourLocation >= 0) {
           hour = hour + parseInt(words[hourLocation]);
@@ -94,8 +87,6 @@ exports.extractDeparture = function( message, postTime ) {
 
     // Building out the date object to return
     var postTime_unix = new Date(postTime).getTime() / 1000;
-
-
 
     var departure = new Date( strtotime(userDescription, postTime_unix)*1000 );
 
@@ -128,10 +119,14 @@ function extractDeparture_cleanText( message ) {
   message = message.replace(/saturday/g   ,   'next saturday' );
   message = message.replace(/sunday/g     ,   'next sunday'   );
 
-  message = message.replace(/am/g         ,   ' am');
-  message = message.replace(/pm/g         ,   ' pm');
+  message = message.replace(/(\dam)/      ,   '$1@catchTime' );
+  message = message.replace(/(\dpm)/      ,   '$1@catchTime' );
+  message = message.replace(/(\sam)/      ,   '$1@catchTime' );
+  message = message.replace(/(\spm)/      ,   '$1@catchTime' );
+  message = message.replace(/am@catchTime/,   ' am@catchTime');
+  message = message.replace(/pm@catchTime/,   ' pm@catchTime');
 
-  message = message.replace(/\s+/g," ");
+  message = message.replace(/\s+/g        ,    " ");
   return message;                
 }
 
